@@ -3,7 +3,7 @@ const Product = require("../../models/productModel");
 async function allProductsController(req, res, next) {
     try {
         // Fetch all products and populate the seller information
-        const products = await Product.find().populate("seller");
+        const products = await Product.find().limit(4).populate("seller");
 
         // Respond with the products data
         res.status(200).json({
