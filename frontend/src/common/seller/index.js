@@ -1,4 +1,4 @@
-const backendDomain = "http://localhost:8050";
+const backendDomain = "sai-fashion-zone-8af9.vercel.app";
 
 const sellerSummaryApi = {
   signUp: {
