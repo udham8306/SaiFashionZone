@@ -22,7 +22,7 @@ app.use(
 );
 
 // Route setup
-app.use("/api/user", router);
+app.use("/api", router);
 app.use("/api", sellerRouter);
 
 
