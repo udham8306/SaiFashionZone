@@ -27,8 +27,8 @@ app.get("/", (req, res) => {
 });
 
 // Route setup
-app.use("/api/user", router); // User routes
-app.use("/api", sellerRouter); // Seller routes
+app.use("api/user", router); // User routes
+app.use("api", sellerRouter); // Seller routes
 
 
 // Error handling middleware for server errors
