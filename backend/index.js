@@ -9,15 +9,15 @@ const sellerRouter = require("./routes/sellerRoute");
 const app = express();
 
 // Middleware to parse JSON and cookies
-app.use(express.json()); // Parses incoming JSON requests
-app.use(cookieParser()); // Parses cookies
+app.use(express.json());
+app.use(cookieParser());
 
 // Middleware to handle CORS
 app.use(
   cors({
-     origin: ["https://sai-fashion-zone-xzsh.vercel.app"],
-     methods : ["POST","GET","PUT"],
-    credentials: true // Allow cookies to be sent with cross-origin requests
+    origin: process.env.FRONTEND_URL,
+    methods: ["POST", "GET", "PUT"],
+    credentials: true, // Allow cookies to be sent with cross-origin requests
   })
 );
 
@@ -36,16 +36,20 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: "Server Error" });
 });
 
-const PORT = process.env.PORT || 8050;
-
-connectDB()
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log("Connected to MongoDB");
-      console.log("Listening on port", PORT);
+// Connect to DB and start the server only if running locally
+if (process.env.NODE_ENV !== "production") {
+  connectDB()
+    .then(() => {
+      app.listen(process.env.PORT || 8050, () => {
+        console.log("Connected to MongoDB");
+        console.log("Listening on port", process.env.PORT || 8050);
+      });
+    })
+    .catch((error) => {
+      console.error("Failed to connect to MongoDB:", error.message);
+      process.exit(1); // Exit the process with failure code
     });
-  })
-  .catch((error) => {
-    console.error("Failed to connect to MongoDB:", error.message);
-    process.exit(1); // Exit the process with failure code
-  });
+}
+
+// Export the express app for Vercel serverless function
+module.exports = app;
