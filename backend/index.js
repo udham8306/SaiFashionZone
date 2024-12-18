@@ -15,8 +15,9 @@ app.use(cookieParser()); // Parses cookies
 // Middleware to handle CORS
 app.use(
   cors({
-    origin: "https://sai-fashion-zone-xzsh.vercel.app",
-    credentials: true, // Allow cookies to be sent with cross-origin requests
+     origin: ["https://sai-fashion-zone-xzsh.vercel.app"],
+     methods : ["POST","GET","PUT"],
+    credentials: true // Allow cookies to be sent with cross-origin requests
   })
 );
 
