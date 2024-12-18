@@ -16,31 +16,29 @@ app.use(cookieParser()); // Parses cookies
 app.use(
   cors({
     origin: process.env.FRONTEND_URL,
-    methods: ["POST", "GET", "PUT"],
+    methods : ["POST","GET","PUT"],
     credentials: true, // Allow cookies to be sent with cross-origin requests
   })
 );
 
-// Default route to handle requests to root ("/")
-app.get("/", (req, res) => {
-  res.send("Welcome to the Backend API!"); // Or any message you want
-});
-
 // Route setup
-app.use("api/user", router); // User routes
-app.use("api", sellerRouter); // Seller routes
+app.use("/api/user", router);
+app.use("/api", sellerRouter);
 
+
+// Error handling middleware for unhandled routes
+app.use((req, res, next) => {
+  res.status(404).json({ message: "Route not found" });
+});
 
 // Error handling middleware for server errors
 app.use((err, req, res, next) => {
-  console.error(err); // Log error
-  res.status(500).json({ message: "Server Error" }); // Send response for server errors
+  console.error(err);
+  res.status(500).json({ message: "Server Error" });
 });
 
-// Port Configuration
 const PORT = process.env.PORT || 8050;
 
-// Connect to the database and start the server
 connectDB()
   .then(() => {
     app.listen(PORT, () => {
@@ -50,8 +48,7 @@ connectDB()
   })
   .catch((error) => {
     console.error("Failed to connect to MongoDB:", error.message);
-    process.exit(1); // Exit process on failure
+    process.exit(1); // Exit the process with failure code
   });
 
-// Export the express app for Vercel serverless function
 module.exports = app;
