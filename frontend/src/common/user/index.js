@@ -1,5 +1,5 @@
 
-const backendDomain = "https://sai-fashion-zone-8af9.vercel.app/";
+const backendDomain = "https://saifashionzone-backend.onrender.com";
 
 const summaryApi = {
   signUp: {
