@@ -129,7 +129,7 @@ Start the admin server:
 ### Seller Homepage
 ![Image](https://github.com/user-attachments/assets/683ca073-2a50-4205-b7af-593ebc733999)
 ### Seller Login
-
+![Image](https://github.com/user-attachments/assets/092c91e7-7740-4fa9-aa05-98ffa6c7fd3d)
 ## Appendix
 
 This project was developed independently by [@udham8306](https://www.github.com/udham8306).
