@@ -121,6 +121,13 @@ Start the admin server:
 - **[Axios](https://axios-http.com/docs/intro)** - HTTP requests
 
 🚀 *Saifashion Zone is a scalable and user-friendly e-commerce platform. Contributions are welcome!*
+## ScreenShots
+### HomePage
+![Image](https://github.com/user-attachments/assets/6ff33a92-8ddd-41fb-b70a-c21997b20d4b)
+### Login Page
+
+
+
 ## Appendix
 
 This project was developed independently by [@udham8306](https://www.github.com/udham8306).
